@@ -28,22 +28,21 @@
 
 Below is a summary of my daily learning milestones:
 
-  
-
-| **Day** | **Date**       | **Topics Covered**                       | **Link**                  |
-
-|---------|----------------|-------------------------------------------|---------------------------|
-
-| Day 1   | YYYY-MM-DD     | Basics of R: Data types, Variables       | [Notes](notes/Day1.md)    |
-
-| Day 2   | YYYY-MM-DD     | Vectors, Matrices, and Data Frames       | [Notes](notes/Day2.md)    |
-
-| Day 3   | YYYY-MM-DD     |     | [Notes](notes/Day3.md)    |
-
-| Day 4   | YYYY-MM-DD     |     | [Notes](notes/Day4.md)    |
-
-| Day 5   | YYYY-MM-DD     |     | [Notes](notes/Day5.md)    |
-
+- Day 1
+	- 2024-11-18
+	- Introduction R
+	- [Notes](notes/Day1.md)
+- Day 2
+	- 2024-11-19
+	- Basics of R: Data types, simple operation 1
+	- [Notes](notes/Day2.md)
+	- [Script](scrips/day2.R)
+- Day 3
+	- 2024-11-22
+	- simple operation 2, Variables, function
+	- [Notes](notes/Day3.md)
+	- [Script](scripts/day3.R)
+- Day 4
   
 
 ---
