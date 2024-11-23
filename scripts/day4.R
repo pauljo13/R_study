@@ -93,3 +93,59 @@ which(x > 10)
 which(x > 10 & x < 15)
 
 
+# rank()
+x
+rank(x)
+
+# sort()
+sort(x)
+
+# order(x)
+order(x)
+
+
+
+# Logic vector
+a = c(T, F, T); a
+a
+
+## comparison operations
+y = 1:5
+y > 3
+y >= 3
+y < 5
+y <= 5
+y == 2
+y != 2
+
+# logic operations
+b = !a; b
+a & b
+a | b
+
+# logic vector funtion
+any( c(F, F, F))
+any( c(F, F, T))
+
+all( c(F, F, T))
+all( c(T, T, T))
+
+c = cars$dist
+c
+any(c > 100)
+any(c > 200)
+
+all(c > 5)
+all(c > 0) # for checking data errors
+
+
+# ifelse()
+x = c(T, F, F, T, F)
+a = 1:5
+b = -1:-5
+y = ifelse(x, a, b); y
+
+y = ifelse(y > 0, y, 0)
+y
+
+y > 0
