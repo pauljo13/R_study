@@ -43,6 +43,10 @@ Below is a summary of my daily learning milestones:
 	- [Notes](notes/Day3.md)
 	- [Script](scripts/day3.R)
 - Day 4
+	- 2024-11-23
+	- Vector : numbers vector
+	- [Notes](notes/day4.md)
+	- [Script](scripts/day4.R)
   
 
 ---
