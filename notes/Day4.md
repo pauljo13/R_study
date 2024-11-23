@@ -191,3 +191,117 @@ Error in which(x) : argument to 'which' is not logical
 > which(x > 10 & x < 15)
 [1] 1
 ```
+
+##### 벡터의 순서 및 정렬 관련 함수
+벡터 요소들의 크기 순서, 정렬을 해주는 `rank(), order(), sort()`함수가 있다. 
+```r
+> x
+[1] 11  3  4 20  5
+
+> rank(x) # 등수, 크기 순서
+[1] 4 1 2 5 3
+
+> sort(x) # 순서대로 정렬
+[1]  3  4  5 11 20
+
+> order(x) # 큰 숫대로 정렬 순서 
+[1] 2 3 5 1 4
+```
+
+
+
+# 논리 벡터
+R은 숫자뿐 아니라 논리값으로 구성된 벡터를 만들 수 있다. 논리 벡터의 요소들은 `TRUE, FALSE, NA(not available)`이다.
+
+##### c()로 논리 벡터 생성
+```r
+# 논리 벡터 생성시 T와 F만 입력하여도 TRUE, FALSE로 인식한다.
+> a <- c(T, F, T); a
+[1]  TRUE FALSE  TRUE
+
+```
+
+##### 비교 연산으로 논리 벡터 만들기
+```r
+> y = 1:5
+> y > 3
+[1] FALSE FALSE FALSE  TRUE  TRUE
+> y >= 3
+[1] FALSE FALSE  TRUE  TRUE  TRUE
+
+> y < 5
+[1]  TRUE  TRUE  TRUE  TRUE FALSE
+> y <= 5
+[1] TRUE TRUE TRUE TRUE TRUE
+
+> y == 2
+[1] FALSE  TRUE FALSE FALSE FALSE
+> y != 2
+[1]  TRUE FALSE  TRUE  TRUE  TRUE
+
+```
+
+##### 논리 연산으로 논리 벡터 만들기
+기존 논리 벡터들에 대해 논리 연산을 수행하여 논리 벡터를 만들 수도 있다.
+```r
+> b = !a; b #not
+[1] FALSE  TRUE FALSE
+
+> a & b # and
+[1] FALSE FALSE FALSE
+
+> a | b #or
+[1] TRUE TRUE TRUE
+```
+
+##### 논리 벡터 함수: any()& all()
+```r
+# any 하나라도 T가 있으면 TRUE
+> any( c(F, F, F))
+[1] FALSE
+> any( c(F, F, T))
+[1] TRUE
+
+# all 모두가 T이면 TRUE
+> all( c(F, F, T))
+[1] FALSE
+> all( c(T, T, T))
+[1] TRUE
+
+
+> c = cars$dist
+> c
+ [1]   2  10   4  22  16  10  18  26  34  17  28  14  20  24  28  26  34  34  46  26  36  60  80  20  26
+[26]  54  32  40  32  40  50  42  56  76  84  36  46  68  32  48  52  56  64  66  54  70  92  93 120  85
+> any(c > 100)
+[1] TRUE
+> any(c > 200)
+[1] FALSE
+> all(c > 5)
+[1] FALSE
+> all(c > 0) # for checking data errors
+[1] TRUE
+```
+
+
+##### ifelse()
+ifelse() 함수는 논리 벡터를 이용하는 또 다른 벡터 연산 함수이다. 
+ifelse(x, a, b) 
+- x : 논리 벡터
+- a & b :  x의 길이와 동일한 벡터
+x의 요소가 TRUE 면 벡터 a 요소
+x의 요소가 FALSE 면 벡터 b 요소
+```r
+> x = c(T, F, F, T, F)
+> a = 1:5
+> b = -1:-5
+> y = ifelse(x, a, b); y
+[1]  1 -2 -3  4 -5
+
+# 논리 벡터가 직접 부여되기보다는 비교 연산의 결과가 부여되는 경우가 많다. y에서 양수인 요소는 그대로 두고, 0이하인 요소는 0이 되도록 하여 새로운 벡터를 만든다.
+> y = ifelse(y > 0, y, 0)
+> y
+[1] 1 0 0 4 0
+> y > 0
+[1]  TRUE FALSE FALSE  TRUE FALSE
+```
