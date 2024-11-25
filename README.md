@@ -47,7 +47,14 @@ Below is a summary of my daily learning milestones:
 	- Vector : numbers vector, logic vector
 	- [Notes](notes/day4.md)
 	- [Script](scripts/day4.R)
-- 
+- Day 5
+	- 2024-11-25
+	- Vector 2 : Character vector, Missing values, Index vector, filtering
+	- [Notes](notes/day5.md)
+	- [Script](scripts/day5.R)
+- Day
+- Day
+
   
 
 ---
