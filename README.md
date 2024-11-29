@@ -52,7 +52,11 @@ Below is a summary of my daily learning milestones:
 	- Vector 2 : Character vector, Missing values, Index vector, filtering
 	- [Notes](notes/Day5.md)
 	- [Script](scripts/day5.R)
-- Day
+- Day 6
+	- 2024-11-29
+	- Matrix basics, filtering
+	- [Notes](notes/Day6.md) 
+	- [Script](scripts/day6.R)
 - Day
 
   
