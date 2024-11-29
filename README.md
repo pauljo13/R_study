@@ -31,7 +31,7 @@ Below is a summary of my daily learning milestones:
 - Day 1
 	- 2024-11-18
 	- Introduction R
-	- [Notes](notes/Day1.md)
+	- [Notes](programming/R/R_study/notes/Day1.md)
 - Day 2
 	- 2024-11-19
 	- Basics of R: Data types, simple operation 1
