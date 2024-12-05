@@ -57,7 +57,10 @@ Below is a summary of my daily learning milestones:
 	- Matrix basics, filtering
 	- [Notes](notes/Day6.md) 
 	- [Script](scripts/day6.R)
-- Day
+- Day 7
+	- 2024-12-05
+	- Matrix 2
+	- 
 
   
 
