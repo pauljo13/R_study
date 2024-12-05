@@ -60,7 +60,9 @@ Below is a summary of my daily learning milestones:
 - Day 7
 	- 2024-12-05
 	- Matrix 2
-	- 
+	- [Notes](notes/Day7.md)
+	- [Script](scripts/day7.R)
+- Day 8
 
   
 

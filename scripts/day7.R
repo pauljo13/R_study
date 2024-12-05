@@ -148,3 +148,26 @@ x %*% A %*% x
 
 
 # diagonal
+A
+diag(A)
+diag(1:4)
+diag(3)
+diag(3, nrow = 2)
+
+# simultaneous equations & inverse matrix
+A <- matrix(c(2, -2, -3, 4), nrow = 2, ncol = 2); A
+b <- c(5, -4); b
+x <- solve(A, b); x
+A %*% x
+
+A.inverse <- solve(A); A.inverse
+A %*% A.inverse
+A.inverse %*% b
+
+
+# eigenvalues & eigenvectors
+A
+ev <- eigen(A); ev
+ev$values
+ev$vectors
+eigen(A, only.values = TRUE)
