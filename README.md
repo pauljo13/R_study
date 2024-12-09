@@ -68,6 +68,10 @@ Below is a summary of my daily learning milestones:
 	- [Notes](notes/Day8.md)
 	- [Script](scripts/day8.R)
 - Day 9
-  
+	  - 2024-12-09
+	  - List : make list and filtering
+	  - [Notes](notes/Day9.md)
+	  - [Script](scripts/day9.R)
+- Day
 
 ---
