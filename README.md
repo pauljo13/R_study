@@ -80,6 +80,4 @@ Below is a summary of my daily learning milestones:
 - Day 11
 	- 
 ---
-
-### **Function list**
 [Function_list](notes/Function%20list.md)
