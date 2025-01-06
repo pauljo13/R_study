@@ -72,6 +72,10 @@ Below is a summary of my daily learning milestones:
 	  - List : make list and filtering
 	  - [Notes](notes/Day9.md)
 	  - [Script](scripts/day9.R)
-- Day
+- Day 10
+	- 2024-12-10
+	- list
+	- [Notes](notes/Day10.md)
+	- [Script](scripts/day10.R)
 
 ---
