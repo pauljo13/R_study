@@ -79,9 +79,9 @@ Below is a summary of my daily learning milestones:
 	- [Script](scripts/day10.R)
 - Day 11
 	- 2025-01-08
-	- list, Data frame
+	- list, Data frame Basics
 	- [Notes](notes/Day11.md)
 	- [Script](scripts/day11.R)
-	
+
 ---
 [Function_list](notes/Function%20list.md)

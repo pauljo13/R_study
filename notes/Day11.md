@@ -474,4 +474,232 @@ $b
 ### 범주형 데이터와 요인(Factors)
 R 데이터 프레임의 각 열은 숫자, 문자, 논리 값 벡터 또는 요인으로 구성된다.
 
-##### 명목형 변수와 요인
+#### 명목형 변수와 요인
+##### 범주 데이터의 숫자 코딩
+10 명의 유전자에게 응답을 얻었다면 아마도 1부터 4까지의 숫자를 이용하여 다음과 같이 설문 결과를 입력하게 될 것이다.
+``` R
+> results <- c(1,3,2,4,3,2,1,3,2,2); results
+ [1] 1 3 2 4 3 2 1 3 2 2
+"""
+여기서 숫자로 코딩된 설문 결과는 1부터 4까지의 수량적 의미를 가지기보다는 4가지 범주의 차이를 숫자로 표현한 것 뿐이다. 그런데 이렇게 범주형 데이터를 숫자 벡터로 표현하는 것은 범주형 데이터를 편리하게 코딩할 수 있는 장점이 있는 반면 다음과 같은 단점을 가진다.
+
+숫자 코딩의 문제점
+- 결과가 숫자 벡터로 입력되었으므로 다음처럼 어떤 범주에도 대응되지 않는 잘못된 숫자가 입력될 수 있다.
+- 범주형 데이터를 숫자 데이터로 오인하여 잘못된 분석
+- 데이터 입력 후 제대로 기록해 두지 않으면 각 숫자의 의미가 무엇인지 파악하기 어렵게 된다.
+"""
+> results[1] <- 5; results
+ [1] 5 3 2 4 3 2 1 3 2 2
+> mean(results)
+[1] 2.7
+```
+
+##### factor()
+이러한 문제를 해결하기 위해 R은 범주형 데이터를 처리할 때 이용할 수 있는 factor라는 형태의 데이터를 제공한다.
+##### levels
+1, 2, 3, 4 level을 가진 요인을 생성한
+```R
+> results
+ [1] 5 3 2 4 3 2 1 3 2 2
+> attributes(results)
+NULL
+
+> fResults <- factor(results, levels = 1:4); fResults
+ [1] <NA> 3    2    4    3    2    1    3    2    2   
+Levels: 1 2 3 4
+
+> attributes(fResults)
+$levels
+[1] "1" "2" "3" "4"
+
+$class
+[1] "factor"
+# 결과에서 보듯이 수준에 포함되지 않은 5의 값은 NA로 변환된다. 요인으로 변경된 데이터의 클래스는 factor가 되고, levels 속성이 지정되어 있음을 볼 수 있다.
+
+> results[1] <- 1
+> fResults <- factor(results, levels=1:4); fResults
+ [1] 1 3 2 4 3 2 1 3 2 2
+Levels: 1 2 3 4
+> fResults[12] <- 5
+Warning message:
+In `[<-.factor`(`*tmp*`, 12, value = 5) :
+  invalid factor level, NA generated
+> fResults
+ [1] 1    3    2    4    3    2    1    3    2    2    <NA> <NA>
+Levels: 1 2 3 4
+> fResults[12] <- 2; fResults
+ [1] 1    3    2    4    3    2    1    3    2    2    <NA> 2   
+Levels: 1 2 3 4
+> fResults[11] <- 4; fResults
+ [1] 1 3 2 4 3 2 1 3 2 2 4 2
+Levels: 1 2 3 4
+> mean(fResults)
+[1] NA
+Warning message:
+In mean.default(fResults) :
+  argument is not numeric or logical: returning NA
+
+> levels(fResults)
+[1] "1" "2" "3" "4"
+> levels(fResults) <- c("A", "B", "C", "None")
+> fResults
+ [1] A    C    B    None C    B    A    C    B    B    None B   
+Levels: A B C None
+
+> typeof(fResults)
+[1] "integer"
+> class(fResults)
+[1] "factor"
+> unclass(fResults)
+ [1] 1 3 2 4 3 2 1 3 2 2 4 2
+attr(,"levels")
+[1] "A"    "B"    "C"    "None"
+> levels(fResults)
+[1] "A"    "B"    "C"    "None"
+> fResults[11] <- 4
+Warning message:
+In `[<-.factor`(`*tmp*`, 11, value = 4) :
+  invalid factor level, NA generated
+> fResults[12] <- "None"; fResults
+ [1] A    C    B    None C    B    A    C    B    B    <NA> None
+Levels: A B C None
+```
+
+#### 순서형 변수와 요인
+범주형 데이터는 앞의 예처럼 범주 간에 순서가 없는 명목형 데이터도 있지만, 범주 간에 순서가 있는 순서형 데이터도 있다.
+``` R
+> satisfaction <- c("매우 불만", "매우 만족", "불만", "만족", "보통","불만", "매우 불만", "보통", "매우 만족", "불만")
+> fsatisfaction <- factor(satisfaction,
++                         levels = c("매우 불만", "불만", "보통", "만족", "매우 만족"))
+> fsatisfaction
+ [1] 매우 불만 매우 만족 불만      만족      보통      불만      매우 불만 보통      매우 만족 불만     
+Levels: 매우 불만 불만 보통 만족 매우 만족
+> fsatisfaction >= "만족"
+ [1] NA NA NA NA NA NA NA NA NA NA
+Warning message:
+In Ops.factor(fsatisfaction, "만족") : ‘>=’ not meaningful for factors
+
+```
+
+##### ordered 인수로 순서형 변수 만들기
+명목형 데이터를 나타내는 요인의 숫자는 각 범주를 표현하는 의미를 가지므로 앞의 맨 마지막 예처럼 순서를 비교하는 연산을 수행할 수 없다.
+``` R
+> oSatisfaction <- factor(satisfaction, ordered = TRUE,
++                         levels = c("매우 불만", "불만", "보통", "만족", "매우 만족")); oSatisfaction
+ [1] 매우 불만 매우 만족 불만      만족      보통      불만      매우 불만 보통      매우 만족 불만     
+Levels: 매우 불만 < 불만 < 보통 < 만족 < 매우 만족
+> oSatisfaction >= "만족"
+ [1] FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+> sum(oSatisfaction >= "만족")
+[1] 3
+> mean(oSatisfaction >= "만족")
+[1] 0.3
+> order(oSatisfaction)
+ [1]  1  7  3  6 10  5  8  4  2  9
+> oSatisfaction
+ [1] 매우 불만 매우 만족 불만      만족      보통      불만      매우 불만 보통      매우 만족 불만     
+Levels: 매우 만족 < 만족 < 보통 < 불만 < 매우 불만
+> oSatisfaction >= "만족"
+ [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+> sum(oSatisfaction >= "만족")
+[1] 8
+> mean(oSatisfaction >= "만족")
+[1] 0.8
+> 
+> order(oSatisfaction)
+ [1]  2  9  4  5  8  3  6 10  1  7
+ 
+```
+
+##### 수준의 순서
+순서형이 아닌 명목형 범주 데이터 factor()로 만들어지고 이 때도 levels에 주어진 순서로, 범주(수준)가 내부적으로 저장되는 숫자가 결정된다. levels에 언급된 수준의 순서대로 1번 부터 차례로 숫자가 부여된다. 순서형 범주 데이터처럼 순서가 데이터 분석에 핵심적인 역할을 하지는 않지만, 그래프나 표가 표현될 때 이 범주(수준)의 순서대로 출력되므로, 범주를 원하는 순서대로 출력하고자 하면 levels 인수에 수준의 순서를 명시하는 것이 좋다.
+``` R
+> a <- c("F", "M", "F", "M", "F")
+> fa1 <- factor(a); fa1
+[1] F M F M F
+Levels: F M
+> unclass(fa1)
+[1] 1 2 1 2 1
+attr(,"levels")
+[1] "F" "M"
+> table(fa1)
+fa1
+F M 
+3 2 
+> fa2 <- factor(a, levels = c("M", "F"))
+> fa2
+[1] F M F M F
+Levels: M F
+> unclass(fa2)
+[1] 2 1 2 1 2
+attr(,"levels")
+[1] "M" "F"
+> table(fa2)
+fa2
+M F 
+2 3 
+```
+
+##### `relevel()`과 `reorder()`를 이용한 수준의 순서 변경
+앞의 예에서는 `factor()` 함수의 `levels` 인수를 사용하여 수준의 순서를 바꾸는 방법을 보았다. 이러한 방법은 수준의 수가 적을 때는 편리한 방법이지만, 수준의 수가 많으면 모든 수준을 `levels` 인수에 나열하여야 하기 때문에 불편하다.
+`factor()` 함수의 `levels` 인수에 모든 수준을 다시열해 주어야 하므로 불편하다. 이러한 경우에는 `relevel()` 함수를 사용하면 원하는 결과를 쉽게 얻을 수 있다.
+``` R
+> fResults
+ [1] A    C    B    None C    B    A    C    B    B    <NA> None
+Levels: A B C None
+> fResults2 <- relevel(fResults, ref = "None"); fResults2
+ [1] A    C    B    None C    B    A    C    B    B    <NA> None
+# `relevel()` 함수의 `ref` 인수에 맨 앞에 나타날 수준을 지정하면 나머지 수준의 순서는 변하지 않고 지정된 수준만 앞으로 이동
+
+Levels: None A B C
+> table(fResults2)
+fResults2
+None    A    B    C 
+   2    2    4    3 
+
+
+# InsectSprays: 살충제의 종류(spray), 해충의 수(count)
+> head(InsectSprays)
+  count spray
+1    10     A
+2     7     A
+3    20     A
+4    14     A
+5    14     A
+6    12     A
+> InsectSprays$spray
+ [1] A A A A A A A A A A A A B B B B B B B B B B B B C C C C C C C C C C C C D D D D D D D D D D D D E E E E E E E E E E E
+[60] E F F F F F F F F F F F F
+Levels: A B C D E F
+> boxplot(count ~ spray, data = InsectSprays)
+> boxplot(count ~ reorder(spray, count, median), data=InsectSprays)
+```
+그런데 이런 데이터는 살충력이 높은 것에서 낮은 것 순으로 배열되는 것이 더 이해하기가 쉽다. 그러한 형태로 그래프를 그리려면 요인이 `spray` 열의 수준이 `count`의 중위수가 낮은 것부터 높은 것 순으로 정렬되어야 한다. `reorder()` 함수를 사용하면 이러한 수준의 변경을 손 쉽게 할 수 있다. `reorder()`는 첫 번째 인수로 요인을, 두 번째 인수로 요인의 수준을 결정할 다른 수치 벡터를, 세 번째 인수로 수치 벡터에 적용할 통계 함수를 지정한다. 그러면 수치 벡터를 요인의 수준 별로 나누어 통계 함수를 적용한 후, 가장 낮은 값에서 큰 값으로 수준의 순서를 재정렬한다.
+
+##### labels 인수
+요인을 만든 후 기존의 수준을 변경하고 싶으면 levels() 함수를 이용하여 새로운 수준을 할당한다고 설명
+그러나 요인을 만들 때 기존에 코딩된 수준을 바로 변경하고 싶을 수가 있다
+factor() 함수에 labels 인수를 이용하면 기존의 수준이 labels 인수에 주어진 형태로 변경
+주의할 점은 levels 인수는 원래 데이터가 코딩된 형태로 정의되어야 하고, labels 인수는 바꿀 코딩 형태로 정의
+``` R
+> fa3 <- factor(a, levels = c("M", "F"), labels = c("Male", "Female")); fa3
+[1] Female Male   Female Male   Female
+Levels: Male Female
+> unclass(fa3)
+[1] 2 1 2 1 2
+attr(,"levels")
+[1] "Male"   "Female"
+> table(fa3)
+fa3
+  Male Female 
+     2      3 
+
+
+> fa3[6] <- "M"
+Warning message:
+In `[<-.factor`(`*tmp*`, 6, value = "M") :
+  invalid factor level, NA generated
+> fa3[6] <- "Male"
+> fa3
+```
+
