@@ -99,7 +99,7 @@ x; y; z
 # Data frame
 search()
 obj <- ls()
-rm(list = obj[which(obj ~= "students")])
+rm(list = obj[which(obj = "students")])
 ls()
 rm(obj)
 ls()
