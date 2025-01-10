@@ -1,0 +1,6 @@
+"name","grade","gender","midterm","final","retake","hw"
+"1","kim",1," M",74,91,TRUE,8
+"2","young",4,"F",82,77,FALSE,9
+"3","lee",3,"M",67,88,FALSE,7
+"4","joe",2,"F",89,78,TRUE,8
+"5","kung",1,"M",92,86,FALSE,10
