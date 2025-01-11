@@ -195,5 +195,15 @@ as.list() : list 형태로 형변환 가능하다.
 c(List1, List2) : 두 개의 리스트를 연결할 수 있다.
 list(List1, List2) : 계측적인 리스트를 만들 수 있다.
 unlist() : 리스트를 벡터로 형 변환한다.
+lapply(리스트, 함수) : 리스트의 각 요소에 함수를 적용함
+sapply(리스트, 함수) : 벡터나 행렬처럼 출력됨
+mapply(FUN, list_1(vector_1), ..., list_n(vector_n), MoreArgs=NULL) : 다수의 리스트에 대해 같은 위치의 요소들에 함수를 적용하는 함수
+lm(col_1 ~ col_2, data = list) : 선형회귀분석
+unclass() : 클래스 속성을 제거한다.
+
+# 데이터 프레임
+as.data.frame() : list나 벡터를 데이터 프레임으로 전환한다.
+factor() : 범주형 데이터를 처리함, levels 요인이 생성됨
+
 
 ```
