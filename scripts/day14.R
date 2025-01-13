@@ -44,9 +44,20 @@ ggplot() + geom_line(mapping = aes(x=age, y=circumference, group=Tree, color=Tre
 ggplot() + geom_line(mapping = aes(x=Orange$age, y=Orange$circumference, color=Orange$Tree))
 ggplot() + geom_line(mapping = aes(x=Orange$age, y=Orange$circumference, linetype=Orange$Tree))
 
+ggplot() + geom_smooth(mapping = aes(x=age, y=circumference), data=Orange)
+ggplot() + geom_smooth(mapping = aes(x=age, y=circumference, color=Tree), data = Orange)
+ggplot() + geom_smooth(mapping = aes(x=age, y=circumference, color=Tree), data = Orange, se=F)
 
 
+# facets
+ggplot() + 
+  geom_point(mapping = aes(x=displ, y=hwy), data=mpg) +
+  facet_wrap(~class, nrow = 2)
+ggplot() + 
+  geom_point(mapping = aes(x=displ, y=hwy), data=mpg) +
+  facet_wrap(~drv + year, nrow = 2)
 
-
-
-
+ggplot() + geom_point(mapping = aes(x=displ, y=hwy), data = mpg) +
+  facet_grid(drv~cyl)
+ggplot() + geom_point(mapping = aes(x=displ, y=hwy), data=mpg) +
+  facet_grid(drv+year~cyl)

@@ -143,5 +143,49 @@ ggplot() + geom_line(mapping = aes(x=age, y=circumference, group= Tree), data = 
 ```
 ##### 이산형 변수는 group 속성으로 자동 매핑된다.
 ``` R
+> Orange$Tree
+ [1] 1 1 1 1 1 1 1 2 2 2 2 2 2 2 3 3 3 3 3 3 3 4 4 4 4 4 4 4 5 5 5 5 5 5 5
+Levels: 3 < 1 < 5 < 2 < 4
+> ggplot() + geom_line(mapping = aes(x=age, y=circumference, group=Tree, color=Tree), data =Orange)
+> ggplot()
+> ggplot() + geom_line(mapping = aes(x=Orange$age, y=Orange$circumference, color=Orange$Tree))
+> ggplot() + geom_line(mapping = aes(x=Orange$age, y=Orange$circumference, linetype=Orange$Tree))
+```
 
+##### geom_smooth() 함수에서 group 속성
+geom_smooth 함수는 group에 매핑된 정보에 따라 데이터를 그룹화하여 추세선을 그린다.
+``` R
+> ggplot() + geom_smooth(mapping = aes(x=age, y=circumference), data=Orange)
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+> ggplot() + geom_smooth(mapping = aes(x=age, y=circumference, color=Tree), data = Orange)
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+> ggplot() + geom_smooth(mapping = aes(x=age, y=circumference, color=Tree), data = Orange, se=F)
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+	- se = FALSE : 신뢰구간이 표시되지 않도록 설정가능
+```
+
+
+# facets으로 나누어 그리기
+원래 그래프를 또 다른 변수의 측면에서 세분화하거나 해당 변수값에 따른 다른 열들을 대입할 때 facets 로 여러 그래프를 나누어 그릴 수 있다.
+##### facet_wrap() 일차원 측면 그래프 그리시
+`facet_wrap()` 함수는 `~` 우변에 기술된 변수를 측면(facets)으로 하여 데이터를 나누어 그래프를 그린다. 이 때 측면(facets)으로 사용되는 변수는 범주형 데이터이어야 한다.
+`ncol`이나 `ncol`을 설정하면 그래프의 행과 열의 수를 지정
+두 개 이상의 변수를 조합하여 측면을 만드려면 다음처럼 수식의 우변에 두 개의 변수를 `+`로 연결
+``` R
+> ggplot() + 
++   geom_point(mapping = aes(x=displ, y=hwy), data=mpg) +
++   facet_wrap(~class, nrow = 2)
+
+> ggplot() + 
++   geom_point(mapping = aes(x=displ, y=hwy), data=mpg) +
++   facet_wrap(~drv + year, nrow = 2)
+```
+
+##### facet_grid() 이차원 측면 그래프 그리기
+원래 그래프를 두 변수의 측면에서 나누어 그리기를 하려면 `facet_grid()`를 사용하는 것이 좋다. `facet_grid()`도 수식은 인수로 입력 받는데, 수식의 좌변과 우변에 데이터의 변수를 지정할 수 있다. 그러면 수식의 좌변에 기술된 변수를 그래프의 행으로, 우변에 기술된 변수를 그래프의 열로 하여 측면 그래프를 그린다.
+``` R
+> ggplot() + geom_point(mapping = aes(x=displ, y=hwy), data = mpg) +
++   facet_grid(drv~cyl)
+> ggplot() + geom_point(mapping = aes(x=displ, y=hwy), data=mpg) +
++   facet_grid(drv+year~cyl)
 ```
