@@ -97,6 +97,10 @@ Below is a summary of my daily learning milestones:
 	- ggplot
 	- [Notes](notes/Day14.md)
 	- [Script](scripts/day14.R)
-- Day 
+- Day 15
+	- 2025-01-14
+	- ggplot plat 2
+	- [Notes](notes/Day15.md)
+	- [Script](scripts/day15.R)
 ---
 [Function_list](notes/Function%20list.md)
