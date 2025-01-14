@@ -111,4 +111,28 @@ p1 + geom_abline(a=0, b=1, linetype=3, color="blue") +
   scale_y_continuous(limits = c(0,45))
 
 
+unique(mpg$class)
+ggplot(mpg, aes(class)) + geom_bar()
+ggplot(mpg, aes(cyl)) + geom_bar()
+
+unique(mpg$cty)
+ggplot(mpg, aes(cty)) + geom_bar()
+ggplot(mpg, aes(drv)) + geom_bar()
+ggplot(mpg, aes(factor(drv, levels = c("f", "r", "4")))) +
+  geom_bar() +
+  labs(x="drv")
+ggplot(mpg) + 
+  geom_bar(aes(reorder(class, class, length))) +
+  labs(x="calss")
+ggplot(mpg) + 
+  geom_bar(aes(reorder(class, class, function(x) -length(x)))) + labs(x="class")
+ggplot(mpg) +
+  geom_bar(aes(reorder(class, hwy, mean))) + labs(x="class")
+mpg %>%
+  group_by(class) %>%
+  summarise(hwy_mean = mean(hwy)) %>%
+  arrange(hwy_mean)
+
+ggplot(mpg, aes(class, fill=factor(year))) + geom_bar() + labs(fill="year")
+ggplot(mpg, aes(class, fill=factor(year))) + geom_bar(position = "fill") + labs(fill="year")
 

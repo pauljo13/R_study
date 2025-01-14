@@ -289,3 +289,34 @@ In geom_abline(a = 0, b = 1, linetype = 3, color = "blue") :
 
 ##### 한 범주형 변수의 그래프
 범주형 변수란 변수의 값이 몇 개의 정해진 범주로 한정되는 변수라고 할 수 있다. 예를 들어 gender라는 변수가 어떤 수업의 수강생의 성별 정보를 표현하고 있다면, 남자 또는 여자라는 두 가지 범주에 의해서 데이터가 표현될 것이다.
+``` R
+ggplot(data=데이터, mapping=aes(x=범주형.변수.이름)) + geom_bar()
+ggplot(데이터, aes(범주형.변수.이름)) + geom_bar()
+ggplot(데이터) + geom_bar(aes(범주형.변수.이름))
+ggplot() + geom_bar(aes(범주형.변수.이름), 데이터)
+
+```
+
+``` R
+unique(mpg$class)
+ggplot(mpg, aes(class)) + geom_bar()
+ggplot(mpg, aes(cyl)) + geom_bar()
+
+unique(mpg$cty)
+ggplot(mpg, aes(cty)) + geom_bar()
+ggplot(mpg, aes(drv)) + geom_bar()
+ggplot(mpg, aes(factor(drv, levels = c("f", "r", "4")))) +
+  geom_bar() +
+  labs(x="drv")
+  
+ggplot(mpg) + 
+  geom_bar(aes(reorder(class, class, length))) +
+  labs(x="calss")
+	- reorder() 함수는 첫 번째 인수인 factor를 두 번째 인수로 주어진 벡터를 factor의 범주 별로 나누어 세 번째 인수로 주어진 함수를 적용한 결고의 순서로 정렬한다.
+	- labs : 그래프 라벨에 들어갈 글자를 입력
+
+ggplot(mpg) + 
+  geom_bar(aes(reorder(class, class, function(x) -length(x)))) + labs(x="class")
+ggplot(mpg) +
+  geom_bar(aes(reorder(class, hwy, mean))) + labs(x="class")
+```
