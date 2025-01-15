@@ -320,3 +320,25 @@ ggplot(mpg) +
 ggplot(mpg) +
   geom_bar(aes(reorder(class, hwy, mean))) + labs(x="class")
 ```
+
+``` R
+> mpg %>%
++   group_by(class) %>%
++   summarise(hwy_mean = mean(hwy)) %>%
++   arrange(hwy_mean)
+# A tibble: 7 × 2
+  class      hwy_mean
+  <chr>         <dbl>
+1 pickup         16.9
+2 suv            18.1
+3 minivan        22.4
+4 2seater        24.8
+5 midsize        27.3
+6 subcompact     28.1
+7 compact        28.3
+
+
+> ggplot(mpg, aes(class, fill=factor(year))) + geom_bar() + labs(fill = "year")
+> ggplot(mpg, aes(class, fill=factor(year))) + geom_bar(position = "fill") + labs(fill = "year")
+
+```
