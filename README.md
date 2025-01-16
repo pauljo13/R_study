@@ -102,11 +102,13 @@ Below is a summary of my daily learning milestones:
 	- ggplot2 part 2
 	- [Notes](notes/Day15.md)
 	- [Script](scripts/day15.R)
-- Day 17
+- Day 16
 	- 2025-01-15
 	- ggplot2 part 3
 	- [Notes](notes/Day16.md)
 	- [Script](scripts/day16.R)
-- Day
+- Day 17
+	- 2025-01-16
+	- 
 ---
 [Function_list](notes/Function%20list.md)
