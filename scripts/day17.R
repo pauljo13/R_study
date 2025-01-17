@@ -48,3 +48,20 @@ p + coord_flip()
 p + coord_polar()
 ggplot(mpg, aes(class, fill=drv)) + 
   geom_bar(position="fill") + coord_polar()
+
+
+install.packages("gridExtra")
+library(gridExtra)
+
+p1 <- ggplot(mpg, aes(drv, displ)) + geom_jitter()
+p2 <- ggplot(mpg, aes(drv, displ)) + geom_boxplot()
+p3 <- ggplot(mpg, aes(drv, displ)) + geom_violin()
+grid.arrange(p1, p2, p3, ncol=3)
+grid.arrange(p1, p2, p3, nrow=2, ncol=2)
+grid.arrange(p1, p2, p3, ncol=3, widths = c(0.5, 0.25, 0.25))
+grid.arrange(p1, p2, p3, nrow=3, heights = c(0.25, 0.25, 0.5))
+grid.arrange(p1, arrangeGrob(p2, p3, ncol = 2, widths = c(0.6, 0.4)), nrow=2, heights=c(0.4, 0.6))
+
+
+p <- ggplot(mpg, aes(cty, hwy)) + geom_point()
+ggsave(file="myplot.png", plot=p, width=5, height = 4)

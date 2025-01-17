@@ -116,3 +116,127 @@ Removed 2 rows containing missing values or values outside the scale range (`geo
 
 
 ##### 색상 척도(color scales) 변경
+1. **자동 색상 매핑**
+    
+    - ggplot2는 `color` 또는 `fill` 속성에 매핑된 데이터가 **연속형**인지 **이산형**인지에 따라 자동으로 색상을 지정함.
+    - **연속형 변수**: 색상 그라데이션 사용.
+    - **이산형 변수**: 구분되는 색상 사용.
+2. **이산형 변수 처리**
+    
+    - 수치형 데이터가 이산형 데이터인 경우, `factor()`로 변환하여 올바르게 매핑 가능.
+    
+    ```R
+    p + geom_point(aes(color=factor(year)), size=2)
+    ```
+    
+3. **색상 팔레트 변경**
+    
+    - **이산형 변수**: `scale_color_brewer()` 사용 (e.g., "Set1", "Accent").
+    - **연속형 변수**: `scale_color_distiller()` 사용 (e.g., "RdPu", "Greens").
+    
+    ```R
+    p_drv + scale_color_brewer(palette = "Set1")
+    p_cty + scale_color_distiller(palette = "Greens")
+    ```
+    
+4. **팔레트 정보 확인**
+    
+    - `RColorBrewer::display.brewer.all()`: 사용 가능한 팔레트 시각화.
+    - `RColorBrewer::brewer.pal.info`: 팔레트 상세 정보 제공.
+
+---
+
+### 레이블 조정
+
+- `labs()`를 사용해 그래프 제목, 축 이름, 범례 이름을 수정.
+    
+    ```R
+    p + labs(title="Graph Title", x="X Axis", y="Y Axis", color="Legend")
+    ```
+    
+
+---
+
+### 테마 변경
+
+1. **기본 제공 테마**
+    
+    - ggplot2는 다양한 기본 테마 제공:
+        - `theme_gray()`, `theme_bw()`, `theme_minimal()` 등.
+    
+    ```R
+    p + theme_classic()
+    ```
+    
+2. **ggthemes 확장 테마**
+    
+    - `ggthemes` 패키지를 설치하면 추가 테마 사용 가능:
+        - `theme_economist()`, `theme_excel()`, `theme_tufte()`, 등.
+3. **테마 설정 변경**
+    
+    - 특정 테마를 모든 그래프에 일괄 적용하려면:
+        - `theme_set()`: 기본 테마 변경.
+        - `theme_get()`: 현재 테마 저장 및 복원.
+    
+    ```R
+    oldTheme <- theme_get()
+    theme_set(theme_classic())
+    theme_set(oldTheme)  # 복원
+    ```
+    
+4. **테마 요소 수정**
+    
+    - `theme()` 함수로 테마 세부 요소 조정:
+        
+        - 범례 위치, 배경색, 글자 스타일 등.
+        
+        ```R
+        myTheme <- theme(
+            plot.title = element_text(size=16, face="bold.italic"),
+            panel.background = element_rect(fill="lightyellow"),
+            legend.position = "top"
+        )
+        p + myTheme
+        ```
+        
+5. **테마 업데이트**
+    
+    - `theme_update()`로 기본 테마 요소 일부 변경 가능.
+    
+    ```R
+    oldTheme <- theme_update(
+        plot.title = element_text(size=16, face="bold.italic"),
+        panel.background = element_rect(fill="lightyellow"),
+        legend.position = "top"
+    )
+    theme_set(oldTheme)  # 복원
+    ```
+
+# 기타 유용한 팁들
+##### 여러 그래프를 한 도표에 넣기
+ggplot2에서 그린 여러 그래프를 한 도표에 넣으려면 gridExtra 패키지의 grid.arrange() 함수를 이용하면 편리하다.
+``` R
+# 설치
+install.packages("gridExtra")
+
+# 탑재
+library(gridExtra)
+
+p1 <- ggplot(mpg, aes(drv, displ)) + geom_jitter()
+p2 <- ggplot(mpg, aes(drv, displ)) + geom_boxplot()
+p3 <- ggplot(mpg, aes(drv, displ)) + geom_violin()
+grid.arrange(p1, p2, p3, ncol=3)
+grid.arrange(p1, p2, p3, nrow=2, ncol=2)
+grid.arrange(p1, p2, p3, ncol=3, widths = c(0.5, 0.25, 0.25))
+grid.arrange(p1, p2, p3, nrow=3, heights = c(0.25, 0.25, 0.5))
+grid.arrange(p1, arrangeGrob(p2, p3, ncol = 2, widths = c(0.6, 0.4)), nrow=2, heights=c(0.4, 0.6))
+
+```
+
+# 그래프 저장하기
+RStudio 사용자가 R에서 그린 그래프를 저장하려면, RStudio의 [Plot] 패널에서 [Export]-[Save as Image…] 메뉴를 이용하면 된다. 이 메뉴를 사용하면 그래프를 저장할 파일 형식, 위치, 이름, 크기를 지정하여 저장할 수 있다. R 콘솔에서 그래프를 저장하려면 다음처럼 `ggsave()` 함수를 이용한다.
+``` R
+p <- ggplot(mpg, aes(cty, hwy)) + geom_point()
+ggsave(file="myplot.png", plot=p, width=5, height = 4)
+```
+
