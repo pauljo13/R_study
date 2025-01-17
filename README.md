@@ -112,6 +112,11 @@ Below is a summary of my daily learning milestones:
 	- ggplot2 part 4
 	- [Notes](notes/Day17.md)
 	- [Script](scripts/day17.R)
-
+- Day 18
+	- 2025-01-17
+	- tidyverse part 1
+	- [Notes](notes/Day18.md)
+	- [Script](scripts/day18.R)
+- Day 
 ---
 [Function_list](notes/Function%20list.md)
