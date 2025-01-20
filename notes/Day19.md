@@ -542,6 +542,8 @@ c(TRUE, FALSE, TRUE) || c(FALSE, TRUE, FALSE)
 
 `switch()`는 조건이 많은 경우 `if-else`보다 간결하게 코드 작성이 가능합니다.
 
+
+___
 # **반복문**
 
 - **for 반복문**: 지정된 범위에서 반복.

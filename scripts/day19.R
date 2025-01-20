@@ -125,3 +125,59 @@ if (x>=5) {
 cat("주사위 눈금:", x, "\n");
 cat("손익:", y, "\n")
 
+#### ifelse
+x <- -5
+if (x < 0) {
+  x <- abs(x)
+} else {
+  x <- x
+}
+cat(x)
+vec <- c(-5, 3, -2, 7)
+result <- ifelse(vec < 0, abs(vec), vec)
+result
+
+#### switch
+i <- 2
+switch(i, "A", "B", "C")
+fruit <- "b"
+switch (fruit,
+  b = "Banana",
+  o = "Orange",
+  "Unknown"
+)
+
+
+# 반복문
+### for
+n <- 1:5
+s <- 0
+for (x in n) s <- s+ x
+s
+s <- 0
+for (x in n) {
+  cat("x :", x, "/ s :", s, "\n")
+  s <- s + x
+  cat("x :", x, "/ s :", s, "\n")
+}
+
+total <- 0 # 총 손익 초기화
+x_vec <- sample(1:6, size=5, replace = T) 
+x_vec
+for( x in x_vec) {
+  if (x>=5) {
+    cat("손님이 이겼습니다.\n")
+    y <- 1
+  } else if ( x >=3 ) {
+    cat("무승부입니다.\n")
+    y <- 0
+  } else {
+    cat("딜러가 이겼습니다.\n")
+    y <- -1
+  }
+  cat("주사위 눈금:", x, "\n")
+  cat("이번 게임 손익:", y, "\n")
+  
+  total <- total + y
+  cat("지금까지의 총 손익:", total, "\n\n")
+}
