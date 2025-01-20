@@ -117,6 +117,12 @@ Below is a summary of my daily learning milestones:
 	- tidyverse part 1
 	- [Notes](notes/Day18.md)
 	- [Script](scripts/day18.R)
-- Day 
+- Day 19
+	- 2025-01-20
+	- tidyverse part 2, Conditional statement
+	- [Notes](notes/Day19.R)
+	- [Script](scripts/day19.R)
+- Day 20
+
 ---
 [Function_list](notes/Function%20list.md)

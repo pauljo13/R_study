@@ -181,3 +181,55 @@ for( x in x_vec) {
   total <- total + y
   cat("지금까지의 총 손익:", total, "\n\n")
 }
+
+x <- rep(c(1, -1), each=2)
+y <- rep(c(1, -1), times=2)
+x
+
+for ( i in seq(along=x)) {
+  cat(x[i], "+", y[i], "= ")
+  if ( x[i] >= 0 || y[i] >= 0 ) {
+    cat(x[i] + y[i], "입니다\n")
+  } else {
+    warning("x와 y 중 하나는 0 이상이어야 합니다.")
+  } 
+}
+
+s <- 0
+x <- 1
+while ( x <= 5 ) {
+  s <- s + x
+  x <- x + 1
+}
+s
+
+x <- c(5, 4, 8, 9, 10, 11)
+s <- 0
+for (a in x) {
+  if( a %% 2 == 0) next
+  cat(a, s, "\n")
+  s <- s + a
+}
+
+
+g <- function(x, y, z) 100 * x + 10 * y + z
+g
+g(1, 2, 0)
+g(2, 1, 0)
+g(1:3, 1, c(2, 4, 6))
+g(y=2, x=1, z=0)
+oddsum <- function(b) sum(seq(from=1, to=b, by=2))
+oddsum(5)
+
+oddsum <- function(b=100) sum( seq(from=1, to=b, by=2) )
+oddsum()
+
+oddsum <- function(b=100, a=1) sum(seq(from=a, to=b, by=2))
+oddsum(a=5, b=10)
+
+g <- function(x, y, z, ...) {
+  cat(..., sep=",")
+  cat("를 추가적으로 입력받았습니다.\n")
+  100 * x + 10 * y + z + sum(...)
+}
+g(x=1, y=1, z=1, w=1, r=2)
