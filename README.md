@@ -126,7 +126,7 @@ Below is a summary of my daily learning milestones:
 - day 1
 	- 2025-02-11
 	- Introduction R
-	- 
+	- [script](scripts2/day1.R)
 
 ---
 [Function_list](notes/Function%20list.md)
