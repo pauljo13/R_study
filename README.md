@@ -122,7 +122,11 @@ Below is a summary of my daily learning milestones:
 	- tidyverse part 2, Conditional statement
 	- [Notes](notes/Day19.R)
 	- [Script](scripts/day19.R)
-- Day 20
+- Biology to R
+- day 1
+	- 2025-02-11
+	- Introduction R
+	- 
 
 ---
 [Function_list](notes/Function%20list.md)
