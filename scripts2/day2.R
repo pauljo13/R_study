@@ -191,3 +191,67 @@ m1 * m2
 m1 * 0
 
 # Quiz
+myMet <- matrix(seq(1,17,by=2), nrow = 3, byrow = T)
+colnames(myMet) <- paste('C',1:3,sep = "")
+rownames(myMet) <- paste('R',1:3,sep = "")
+myMet
+
+# Data frame
+m1 <- matrix(1:9, nrow=3); m1
+m2 <- matrix(1:9, nrow=3); m2
+m2[1,1] = '1'
+m1
+m2
+d1 <- as.data.frame(m1); d1
+d2 <- as.data.frame(m1, stringAsFactors = F);d2
+summary(d1)
+summary(d2)
+d2[1,1] <- "a"; d2
+summary(d2)
+d2$V1
+d2$V2
+d2$V3
+
+# Creating a data frame
+data.frame(1:4, c('a','b','c','d'), c(T,T,F,F))
+d1 <- data.frame(c1 = 1:4,
+                 c2 = c('a','b','c','d'), 
+                 c3 = c(T,T,F,F),
+                 row.names = c(paste('r',1:4,sep = "")))
+d1
+summary(d1)
+d1[2,1]
+d1$c1
+d1$c2[1]
+d1[2,]
+
+d2 <- data.frame(V1=1:4,
+                 V2=5:8)
+d2
+d3 <- data.frame(d1$c2, d2$V2); d3
+m3 <- cbind(d1$c2, d2$V2); m3
+rbind(d1$c2, d2$V2)
+
+d1$nt <- c('A', 'T', 'C', 'G')
+d1
+
+# Quiz
+myMet <- matrix(seq(1, by=2, length.out=9), nrow = 3, byrow = T, dimnames = list(c(paste('R',1:3,sep = "")),c(paste('C',1:3,sep = ""))))
+myMet
+myDf <- as.data.frame(myMet); myDf
+myDf$C4 <- paste('C4_R',1:3,sep="")
+myDf
+
+# list
+l1 <- list(3, c(T,T,F), matrix(1:4, nrow = 2)); l1
+l1[1]
+l1[[1]]
+d1
+l2 <- as.list(d1); l2
+l2[[1]]
+l2$c3
+l2[['nt']]
+
+# unlist() : simplifies it to produce a vector which contains all the atomic components in list x
+l2
+unlist(l2)
