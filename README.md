@@ -123,10 +123,13 @@ Below is a summary of my daily learning milestones:
 	- [Notes](notes/Day19.R)
 	- [Script](scripts/day19.R)
 - Biology to R
-- day 1
+- Day 1
 	- 2025-02-11
-	- Introduction R
+	- Introduction R part 1 / ppt1 ~22p
 	- [script](scripts2/day1.R)
-
+- Day 2
+	- 2025-02-12
+	- Introduction R part 2 / ppt1 22p ~ 
+	- [script](scripts2/day2.R)
 ---
 [Function_list](notes/Function%20list.md)
