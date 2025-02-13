@@ -227,3 +227,64 @@ repeat {
 }
 
 # Quiz
+i <- 0
+multi_7 <- c()
+repeat {
+  i <- i + 1
+  if (i >= 100) {
+    break
+  } else if (i %% 7 == 0) {
+    multi_7 <- c(multi_7, i)
+  }
+}; multi_7
+
+
+# Create a matrix using for loop
+myMat1 <- matrix(data = NA, nrow = 9, ncol = 9)
+for (i in 1:9) {
+  val <- 1:9 * i
+  myMat1[,i] <- val
+}
+colnames(myMat1) <- paste('Multiple', 1:9, sep = '_')
+myMat1
+
+myMat2 <- c()
+for (i in 1:9) {
+  val <- 1:9 * i
+  myMat2 <- rbind(myMat2, val)
+}
+rownames(myMat2) <- paste('Multiple', 1:9, sep="_")
+myMat2
+
+# Quiz
+colnames(myMat2) <- paste('V', 1:9, sep = '')
+myMat2
+for (i in colnames(myMat2)) {
+  print(sprintf('%s = %d', i, sum(myMat2[,i])))
+}
+
+# apply : Returns a vector or array of list of values obtained by applying a function to margins of an array or matrix.
+"""
+apply(X, MARGIN, FUN, ...)
+X: an array including a matrix
+MARGIN: 1 for rows, 2 for columns
+FUN: the function to be applied
+"""
+sum_vals <- apply(myMat2, 2, sum); sum_vals
+paste('the sum of column ', seq_along(sum_vals), ': ', sum_vals, sep="")
+
+# Quiz 
+mat <- c()
+for (i in 1:3) {
+  mat <- rbind(mat, i * seq(2, 10, by=2))
+}
+mat
+apply(mat, 1, mean)
+
+### mean()
+x <- c(0:10, 50)
+mean(x)
+mean(x, trim = 0.10)
+y <- c(0:10, NA)
+mean(y)
+mean(y, na.rm = T)

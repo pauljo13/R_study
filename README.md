@@ -131,5 +131,9 @@ Below is a summary of my daily learning milestones:
 	- 2025-02-12
 	- Introduction R part 2 / ppt1 22p ~ 
 	- [script](scripts2/day2.R)
+- Day 3
+	- 2025-02-13
+	- R conditional and loop / ppt2
+	- [script](scripts2/day3.R)
 ---
 [Function_list](notes/Function%20list.md)
