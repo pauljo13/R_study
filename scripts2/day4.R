@@ -68,4 +68,14 @@ b
 # Write & read
 ## Set current R working directory
 getwd()
-setwd("/Users/knu_cgl1/Desktop/Study/repositories/BIC0711_practice1")
+setwd("/Users/knu_cgl1/Desktop/Study/Obsidian/R_study/scripts2")
+fileConn <- file('text1.txt', open="wt")
+writeLines(c('line1', 'line2'), con = fileConn)
+close(fileConn)
+file.show('text1.txt')
+
+# weiting lines - cat()
+cat(c('line1', 'line2'), file = 'test3.txt', sep = "\n")
+file.show('test3.txt')
+
+# sink()
