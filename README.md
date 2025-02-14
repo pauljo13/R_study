@@ -135,5 +135,10 @@ Below is a summary of my daily learning milestones:
 	- 2025-02-13
 	- R conditional and loop / ppt2
 	- [script](scripts2/day3.R)
+- Day 4
+	- 2025-02-14
+	- R User-defined function, Write & read / ppt3 1p ~ 29p
+	- [script](scripts2/day4.R)
+- Day 5
 ---
 [Function_list](notes/Function%20list.md)

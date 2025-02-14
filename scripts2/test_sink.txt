@@ -1,0 +1,17 @@
+the sum of column1: 45
+-----------------------
+the sum of column2: 90
+-----------------------
+the sum of column3: 135
+-----------------------
+the sum of column4: 180
+-----------------------
+the sum of column5: 225
+-----------------------
+the sum of column6: 270
+-----------------------
+the sum of column7: 315
+-----------------------
+the sum of column8: 360
+-----------------------
+the sum of column9: 405
