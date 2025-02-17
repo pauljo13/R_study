@@ -140,5 +140,9 @@ Below is a summary of my daily learning milestones:
 	- R User-defined function, Write & read / ppt3 1p ~ 29p
 	- [script](scripts2/day4.R)
 - Day 5
+	- 2025-02-17
+	- R package / ppt3 30p ~
+	- [script](scripts2/day5.R)
+- Day 6
 ---
 [Function_list](notes/Function%20list.md)
