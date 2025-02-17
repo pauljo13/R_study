@@ -96,7 +96,7 @@ strsplit() : 문자열을 나눌 때 구분자로 사용한 문자열을 split= 
 nchar() : 문자 벡터의 각 요소의 문자 개수를 알려 준자. 공백도 문자이므로 문자 개수를 셀 때 포함이 된다는데 주의한다.
 substr(x, start, stop) : 벡터 x의 문자열 요소의 start번째 문자부터 stop번째 문자까지의 부분 문자열을 출력한다.
 grep(pattern, x, ignore.case=F, fixed=F) : 벡터 x의 문자열 요소에 pattern 문자열 요소가 있는지 검색한다. pattern은 정규식일 수 있다.
-ub(pattern, replacement, x, ignore.case=F, fixed=F) : 벡터 x의 문자열 요소에서 pattern을 찾아 replacement로 대체한다.
+gsub(pattern, replacement, x, ignore.case=F, fixed=F) : 벡터 x의 문자열 요소에서 pattern을 찾아 replacement로 대체한다.
 strsplit(x, split, fixed=F) : 벡터 x의 문자열 요소를 split에서 분리한 결과를 반환한다.
 paste(…, sep=’ ’) : 문자 벡터를 sep를 이용하여 결합시킨 결과를 반환한다.
 toupper(x) : 벡터 x의 문자열 요소를 대문자로 변환한다.
