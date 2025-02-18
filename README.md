@@ -144,5 +144,6 @@ Below is a summary of my daily learning milestones:
 	- R package / ppt3 30p ~ 61p
 	- [script](scripts2/day5.R)
 - Day 6
+	- 
 ---
 [Function_list](notes/Function%20list.md)
