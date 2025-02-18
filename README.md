@@ -141,9 +141,12 @@ Below is a summary of my daily learning milestones:
 	- [script](scripts2/day4.R)
 - Day 5
 	- 2025-02-17
-	- R package / ppt3 30p ~ 61p
+	- R package & practice 1 / ppt3 30p ~ 61p
 	- [script](scripts2/day5.R)
 - Day 6
-	- 
+	- 2025-02-18
+	- R practice 2 / ppt4 1p ~ 28p
+	- [script](scripts2/day6.R)
+
 ---
 [Function_list](notes/Function%20list.md)

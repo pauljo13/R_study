@@ -150,3 +150,20 @@ expr <- attr(gse[[1]], "assayData")[["exprs"]]
 colnames(pheno)
 colnames(expr) <- pheno[colnames(expr), 'title']
 expr
+colnames(expr)
+
+write.table(pheno, "GSE25297_phenodata.txt", sep="\t")
+write.table(expr, "GSE25297_exprsdata.txt", sep="\t")
+# Get t-test p-value and mean differences
+exc.smaples <- c("CNSlymphoma_rep4", "CNSlymphoma_rep5","CNSlymphoma_rep7","NormalLymphNode_rep7")
+expr.ft <- expr[,!(colnames(expr) %in% exc.smaples)]
+colnames(expr.ft)
+pheno$title
+match(colnames(expr.ft), pheno$title)
+
+group <- pheno$type[match(colnames(expr.ft), pheno$title)]
+dim(expr.ft)
+dim(group)
+tres <- apply(expr.ft, 1, function(x) t.test(x~group))
+
+
