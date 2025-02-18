@@ -121,3 +121,32 @@ boxplot(val~group)
 group <- factor(group, levels = c("liver", "kidney"))
 boxplot(val~group, col = c("red"))
 boxplot(val~group, col = c("blue", "red"), xlab = "organ", ylab = "log2(TPM+1)")
+
+# Merge (join) two data frames
+mat2 <- merge(mat_sorted, expr, by.x="EnsemblGeneID", by.y = "row.names")
+dim(mat_sorted)
+dim(expr)
+dim(mat2)
+
+mat2 <- merge(mat_sorted, expr, by.x="EnsemblGeneID", by.y = "row.names", all = T, sort = F)
+dim(mat2)
+
+# Draw a heatmap
+tpm.data.lg2.ft <- tpm.data.lg2[c(up.genes, dn.genes),]
+
+colcol <- gsub("liver", "yellow", gsub("kidney", "green", as.vector(group)))
+
+install.packages("gplots")
+library(gplots)
+heatmap.2(tpm.data.lg2.ft, Rowv = T, Colv = T, scale = "row", trace = "none", density.info = 'none', col = bluered(9), ColSideColors = colcol)
+
+
+# R practice 3
+setwd("/Users/knu_cgl1/Desktop/Study/repositories/BIC0711_practice1")
+library(GEOquery)
+gse <- getGEO("GSE25297")
+pheno <- attr(attr(gse[[1]], "phenoData"), "data")
+expr <- attr(gse[[1]], "assayData")[["exprs"]]
+colnames(pheno)
+colnames(expr) <- pheno[colnames(expr), 'title']
+expr
