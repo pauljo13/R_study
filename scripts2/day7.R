@@ -114,3 +114,19 @@ ggbarplot(df5, x = "probe", y = "Expr", fill = "Group",
   stat_compare_means(aes(group = Group), label = "p.signif")
 
 #Quiz
+df5
+ggplot(df5, aes(x = probe, y = Expr, fill = Group)) + geom_boxplot()
+
+#facet
+ggplot(df5, aes(x=Group, y =Expr, fill = Group) ) + geom_boxplot()
+ggplot(df5, aes(x=Group, y =Expr, fill = Group) ) + geom_boxplot() + facet_grid(~probe)
+
+# Boxplot for multiple genes with ggpubr
+ggboxplot(df5, x = "probe", y = "Expr",
+          color = "Group", palette = "npg", #nature publishing group
+          add = "jitter") + stat_compare_means(aes(group = Group), label = "p.signif")
+
+ggboxplot(df5, x = "Group", y = "Expr",
+          color = "Group", palette = "npg", #nature publishing group
+          add = "jitter",
+          facet.by = "probe", nrow=1) + stat_compare_means(aes(group = Group), label = "p.format", method = "t.test")
