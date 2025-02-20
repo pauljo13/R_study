@@ -122,7 +122,8 @@ Below is a summary of my daily learning milestones:
 	- tidyverse part 2, Conditional statement
 	- [Notes](notes/Day19.R)
 	- [Script](scripts/day19.R)
-- Biology to R
+---
+## Biology to R Basics
 - Day 1
 	- 2025-02-11
 	- Introduction R part 1 / ppt1 ~22p
