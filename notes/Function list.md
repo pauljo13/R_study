@@ -23,7 +23,7 @@ xor(x,y) : XOR
 
 # 문자열 연산
 paste("x","y","..." sep = "c") : 문자열 결합, sep = "c"로 문자열을 결합
-straplit("x y", split="c") : 문자열을 split="c" 기준으로 분리
+strsplit("x y", split="c") : 문자열을 split="c" 기준으로 분리
 
 
 # 변수
@@ -55,7 +55,7 @@ n:m : n부터 m까지 1씩 증가하거나 감소하는 수열 생성
 seq(n,m) : n에서 m까지 1씩 증가하거나 감소하는 수열 생성
 seq(n,m by=k) : n에서 m까지 k씩 만큼 증가하거나 감소한다.
 seq(length=j, from=n, by=k) : n부터 k씩 만큼 j길이(개수) 만큼 수열 생성
-seq(along = y) : y 벡터의 길이 만큼 일련번호를 생성한다.
+seq(along = y) : y 벡터의  만큼 일련번호를 생성한다.
 rep(x, times = n) : x 벡터를 n 만큼 반복시킨다.
 rep(x, each = n) : x 벡터의 요소를 n 만큼 반복한다.
 
